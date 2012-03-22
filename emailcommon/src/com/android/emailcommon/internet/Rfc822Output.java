@@ -103,11 +103,11 @@ public class Rfc822Output {
             return null;
         }
         StringBuffer altMessage = new StringBuffer();
-        String htmlContent = TextUtils.htmlEncode(body.mTextContent); // Escape HTML reserved chars
+        String htmlContent = TextUtils.htmlEncodeForEmail(body.mTextContent); // Escape HTML reserved chars
         htmlContent = NEWLINE_PATTERN.matcher(htmlContent).replaceAll(NEWLINE_HTML);
         altMessage.append(htmlContent);
         if (body.mIntroText != null) {
-            String htmlIntro = TextUtils.htmlEncode(body.mIntroText);
+            String htmlIntro = TextUtils.htmlEncodeForEmail(body.mIntroText);
             htmlIntro = NEWLINE_PATTERN.matcher(htmlIntro).replaceAll(NEWLINE_HTML);
             altMessage.append(htmlIntro);
         }
